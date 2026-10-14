@@ -22,3 +22,11 @@ elif total_centro == meta_centro:
     estado_centro = "meta alcanzada exactamente"
 else:
     estado_centro = "meta NO alcanzada"
+    
+if total_norte > meta_norte:
+    estado_centro = "meta superada"
+elif total_norte == meta_norte:
+    estado_norte = "meta alcanzada exactamente"
+else:
+    estado_norte = "meta NO alcanzada"
+
