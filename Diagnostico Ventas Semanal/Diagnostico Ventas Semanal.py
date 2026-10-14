@@ -20,3 +20,5 @@ if total_centro > meta_centro:
     estado_centro = "meta superada"
 elif total_centro == meta_centro:
     estado_centro = "meta alcanzada exactamente"
+else:
+    estado_centro = "meta NO alcanzada"
