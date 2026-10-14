@@ -21,5 +21,9 @@ if not nombre or kit == "" or cantidad < 1 or dias < 1:
     resultado = "Registro rechazado: datos invalidos!"
 elif autorizacion and cantidad <= 3 and not dias > 7: #not dias > 7 dias | dias <=7
     resultado = f"Solicitud aprobada para {nombre}: {cantidad} kit(s) de {kit}."
+elif cantidad > 3 or dias > 7:
+    resultado = "Solicitud enviada a revision!"
+else:
+    resultado = "Solicitud rechazada: se requiere autorizacion"
 
 print(resultado)
