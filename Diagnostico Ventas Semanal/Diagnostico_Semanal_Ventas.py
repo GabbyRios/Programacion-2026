@@ -1,105 +1,64 @@
+"""Plantilla guiada: análisis de ventas de dos tiendas, sin ciclos."""
 
-"""Análisis de ventas de dos tiendas, sin ciclos."""
-
+dias = ["Lunes","Martes","Miercoles", "Jueves", "Viernes"]
 ventas_centro = [125000, 98000, 147000, 132000, 110000]
 ventas_norte = [140000, 135000, 150000, 145000, 155000]
-
 meta_centro = 640000
 meta_norte = 700000
 
-# Tienda Centro
-total_centro = sum(ventas_centro)
-cantidad_centro = len(ventas_centro)
-mayor_centro = max(ventas_centro)
-menor_centro = min(ventas_centro)
+# TODO: calcula total, cantidad, mayor y menor para Centro.
+total_centro = sum(ventas_centro) # Total de ventas semanal
+cantidad_centro = len(ventas_centro) # Catidad de días registrados
 
-promedio_centro = total_centro / cantidad_centro
-rango_centro = mayor_centro - menor_centro
-diferencia_centro = total_centro - meta_centro
-porcentaje_centro = total_centro * 100 / meta_centro
 
-# Estado de la meta de Centro
+promedio_centro = total_centro / cantidad_centro # Promedio ventas diario
+menor_centro = min(ventas_centro) #Venta minima de la Tienda del Centro
+mayor_centro = max(ventas_centro) #Venta maxima de la Tienda del Centro
+dia_mayor = dias[ventas_centro.index(mayor_centro)]
+print(dia_mayor, mayor_centro)
+
+porcentaje_centro = (total_centro * 100 / meta_centro)
+
+# TODO: repite los indicadores para Norte.
+total_norte = sum(ventas_norte) # Total de ventas semanal
+cantidad_norte = len(ventas_norte) # Catidad de días registrados
+
+promedio_norte = total_norte / cantidad_norte # Promedio ventas diario
+menor_norte = min(ventas_norte) #Venta minima de la Tienda del Norte
+mayor_norte = max(ventas_norte) #Venta maxima de la Tienda del Norte
+
+porcentaje_norte = (total_norte * 100 / meta_norte)
+
+# TODO: decide si cada tienda superó, igualó o no alcanzó su meta.
 if total_centro > meta_centro:
-    estado_centro = "Superó la meta"
+    estado_centro = "meta superada"
 elif total_centro == meta_centro:
-    estado_centro = "Igualó la meta"
+    estado_centro = "meta alcanzada exactamente"
 else:
-    estado_centro = "No alcanzó la meta"
+    estado_centro = "meta NO alcanzada"
 
-# Tienda Norte
-total_norte = sum(ventas_norte)
-cantidad_norte = len(ventas_norte)
-mayor_norte = max(ventas_norte)
-menor_norte = min(ventas_norte)
-
-promedio_norte = total_norte / cantidad_norte
-rango_norte = mayor_norte - menor_norte
-diferencia_norte = total_norte - meta_norte
-porcentaje_norte = total_norte * 100 / meta_norte
-
-# Estado de la meta de Norte
 if total_norte > meta_norte:
-    estado_norte = "Superó la meta"
+    estado_norte = "meta superada"
 elif total_norte == meta_norte:
-    estado_norte = "Igualó la meta"
+    estado_norte = "meta alcanzada exactamente"
 else:
-    estado_norte = "No alcanzó la meta"
+    estado_norte = "meta NO alcanzada"
 
-# Comparación de totales y rangos
-diferencia_totales = abs(total_centro - total_norte)
-
+# TODO: compara los totales y los rangos.
 if total_centro > total_norte:
-    tienda_mayor_total = "Centro"
+    tienda_mayor_ventas = "Tienda del Centro"
 elif total_norte > total_centro:
-    tienda_mayor_total = "Norte"
+    tienda_mayor_venta = 'Tienda del Norte'
 else:
-    tienda_mayor_total = "Ambas tiendas empataron"
+    tienda_mayor_venta = 'Ambas tiendas tienen el mismo total'
+# TODO: presenta un reporte con etiquetas claras y f-strings.
 
-if rango_centro > rango_norte:
-    tienda_mayor_rango = "Centro"
-elif rango_norte > rango_centro:
-    tienda_mayor_rango = "Norte"
-else:
-    tienda_mayor_rango = "Ambas tiendas tienen el mismo rango"
+print('COMPARACIÓN SEMANAL DE TIENDAS')
+print("-" * 70)
+print(f"Centro | total: ₡{total_centro:,.2f} | meta ₡{meta_centro:,.2f} | cumplimiento {porcentaje_centro:.0f}%")
+print(f"Centro logro: {estado_centro}\n")
+print(f"Norte  | total: ₡{total_norte:,.2f} | meta ₡{meta_norte:,.2f} | cumplimiento {porcentaje_norte:.0f}%")
+print(f"Norte logro: {estado_norte}\n")
 
-# Reporte de resultados
-print("===== REPORTE DE VENTAS =====")
-
-print("\nTIENDA CENTRO")
-print(f"Total semanal: ₡{total_centro:,.0f}")
-print(f"Cantidad de registros: {cantidad_centro}")
-print(f"Venta mayor: ₡{mayor_centro:,.0f}")
-print(f"Venta menor: ₡{menor_centro:,.0f}")
-print(f"Promedio diario: ₡{promedio_centro:,.2f}")
-print(f"Rango de ventas: ₡{rango_centro:,.0f}")
-print(f"Diferencia respecto a la meta: ₡{diferencia_centro:,.0f}")
-print(f"Cumplimiento de la meta: {porcentaje_centro:.2f}%")
-print(f"Estado: {estado_centro}")
-
-print("\nTIENDA NORTE")
-print(f"Total semanal: ₡{total_norte:,.0f}")
-print(f"Cantidad de registros: {cantidad_norte}")
-print(f"Venta mayor: ₡{mayor_norte:,.0f}")
-print(f"Venta menor: ₡{menor_norte:,.0f}")
-print(f"Promedio diario: ₡{promedio_norte:,.2f}")
-print(f"Rango de ventas: ₡{rango_norte:,.0f}")
-print(f"Diferencia respecto a la meta: ₡{diferencia_norte:,.0f}")
-print(f"Cumplimiento de la meta: {porcentaje_norte:.2f}%")
-print(f"Estado: {estado_norte}")
-
-print("\nCOMPARACIÓN")
-print(f"Tienda con mayor total: {tienda_mayor_total}")
-print(f"Diferencia entre los totales: ₡{diferencia_totales:,.0f}")
-print(f"Tienda con mayor rango: {tienda_mayor_rango}")
-
-# Tres conclusiones
-print("\nCONCLUSIONES")
-print("1. La tienda Norte obtuvo un total semanal mayor que Centro.")
-print("2. Centro tuvo un rango de ventas mayor, por lo que sus ventas variaron más.")
-print("3. Centro no alcanzó su meta, mientras que Norte la superó.")
-
-print(f"centro total: ₡{total_centro:,.0f}")
-print(f"Centro logro: {porcentaje_centro:.2f}%")
-print(f"norte total: ₡{total_norte:,.0f}")
-print(f"Norte logro: {porcentaje_norte:.2f}%")
+print("Tienda con mayor ventas:", tienda_mayor_venta)
 
