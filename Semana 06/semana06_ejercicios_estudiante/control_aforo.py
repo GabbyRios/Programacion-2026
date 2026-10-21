@@ -103,3 +103,75 @@ Otros casos para probar:
 
 
 # Desarrolle su solución a partir de esta línea.
+capacidad = 700
+grupos_aceptados = []
+grupos_rechazados = []
+ocupacion = 0
+
+entrada = input("Ingrese el grupo o escriba fin: ").strip().lower()
+
+while entrada != "fin":
+    try:
+        grupo = int(entrada)
+
+        if grupo <= 0:
+            print("Entrada inválida: ingrese un entero positivo.")
+
+        elif ocupacion + grupo <= capacidad:
+            grupos_aceptados.append(grupo)
+            ocupacion = ocupacion + grupo
+            print("Grupo aceptado: ingresan", grupo, "personas.")
+
+        else:
+            grupos_rechazados.append(grupo)
+            print("Grupo rechazado: no hay espacio para", grupo, "personas.")
+
+        if grupo > 0:
+            print("Ocupación actual:", ocupacion)
+            print("Espacios disponibles:", capacidad - ocupacion)
+
+    except ValueError:
+        print("Entrada inválida: ingrese un entero positivo o fin.")
+
+    entrada = input("Ingrese el grupo o escriba fin: ").strip().lower()
+
+total_admitido = 0
+
+for grupo in grupos_aceptados:
+    total_admitido = total_admitido + grupo
+
+print()
+print("REPORTE FINAL")
+print("Grupos aceptados:", len(grupos_aceptados))
+print("Grupos rechazados:", len(grupos_rechazados))
+print("Personas admitidas:", total_admitido)
+print("Capacidad máxima:", capacidad)
+print("Espacios disponibles:", capacidad - ocupacion)
+
+if ocupacion > 0:
+    porcentaje = ocupacion / capacidad * 100
+    print(f"Porcentaje de ocupación: {porcentaje:.2f}%")
+else:
+    print("Porcentaje de ocupación: 0.00%")
+
+if grupos_aceptados:
+    menor = grupos_aceptados[0]
+    mayor = grupos_aceptados[0]
+
+    for grupo in grupos_aceptados:
+        if grupo < menor:
+            menor = grupo
+        if grupo > mayor:
+            mayor = grupo
+
+    print("Grupo aceptado más pequeño:", menor)
+    print("Grupo aceptado más grande:", mayor)
+else:
+    print("No hay grupos aceptados.")
+
+if ocupacion == capacidad:
+    print("Estado final: capacidad completa.")
+elif ocupacion == 0:
+    print("Estado final: sin ocupación.")
+else:
+    print("Estado final: normal.")
