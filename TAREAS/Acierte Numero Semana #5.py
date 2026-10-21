@@ -1,8 +1,8 @@
 while True:
-    palabra = input("Escriba salir para terminar: ").strip().lower()
+    numero = int(input("Escriba un número mayor que 10: "))
 
-    if palabra == "salir":
-        print("Programa finalizado.")
+    if numero > 10:
+        print("Número aceptado.")
         break
 
-    print("Todavía no termina.")
+    print("Debe intentar otra vez.")

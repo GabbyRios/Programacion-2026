@@ -1,8 +1,4 @@
-while True:
-    numero = int(input("Escriba un número mayor que 10: "))
+import random
 
-    if numero > 10:
-        print("Número aceptado.")
-        break
-
-    print("Debe intentar otra vez.")
+numero_ejemplo = random.randint(1, 10)
+print(f"Número generado: {numero_ejemplo}")
