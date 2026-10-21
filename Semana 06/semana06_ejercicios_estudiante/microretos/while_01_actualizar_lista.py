@@ -7,11 +7,12 @@ Prediga la lista final. Complete la actualización y siga el valor del índice.
 """
 
 puntajes = [72, 85, 90]
+puntajes_transformados = [0,1,2]
 indice = 0
 
 while indice < len(puntajes):
     # TODO: actualice el puntaje de esta posición dividiéndolo entre 100.
-    pass
+    puntajes[indice] = puntajes[indice] / 100
 
     indice += 1
 
