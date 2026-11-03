@@ -3,12 +3,57 @@
 producto = "Tomate"
 precios = [900, 850, 1000, 950, 1200]
 
-# TODO: Calcule promedio, mínimo, máximo y rango (máximo - mínimo).
-# TODO: Recorra precios con while y un índice para contar los que SUPERAN
-#       el promedio. Aumente el índice en cada vuelta para terminar el ciclo.
-# TODO: Clasifique el rango: >=300 variación alta; >=150 moderada; si no, baja.
-# TODO: Muestre producto y todos los resultados.
-# Con los datos base: promedio ₡980, mínimo ₡850, máximo ₡1200,
-# rango ₡350, 2 precios sobre el promedio, variación alta.
-# Prueba de código: use temporalmente cinco precios iguales y compruebe que
-# el rango sea cero y ninguno supere el promedio. Restaure la lista.
+# Calcular promedio, mínimo, máximo y rango
+promedio = sum(precios) / len(precios)
+minimo = min(precios)
+maximo = max(precios)
+rango = maximo - minimo
+
+# Contar precios que superan el promedio usando while
+indice = 0
+sobre_promedio = 0
+
+while indice < len(precios):
+    if precios[indice] > promedio:
+        sobre_promedio += 1
+    indice += 1
+
+# Clasificar el rango
+if rango >= 300:
+    variacion = "alta"
+elif rango >= 150:
+    variacion = "moderada"
+else:
+    variacion = "baja"
+
+# Mostrar resultados
+print("Producto:", producto)
+print("Promedio: ₡", promedio)
+print("Mínimo: ₡", minimo)
+print("Máximo: ₡", maximo)
+print("Rango: ₡", rango)
+print("Precios sobre el promedio:", sobre_promedio)
+print("Variación:", variacion)
+
+# Prueba temporal: cinco precios iguales
+precios = [1000, 1000, 1000, 1000, 1000]
+
+promedio = sum(precios) / len(precios)
+minimo = min(precios)
+maximo = max(precios)
+rango = maximo - minimo
+
+indice = 0
+sobre_promedio = 0
+
+while indice < len(precios):
+    if precios[indice] > promedio:
+        sobre_promedio += 1
+    indice += 1
+
+print("\nPrueba con precios iguales:")
+print("Rango: ₡", rango)
+print("Precios sobre el promedio:", sobre_promedio)
+
+# Restaurar la lista original
+precios = [900, 850, 1000, 950, 1200]
