@@ -1,27 +1,40 @@
-"""Plantilla para leer el CSV preparado para la Semana 10."""
+"""El mismo expediente, con Pandas y las mismas tres funciones."""
 
-import csv
 from pathlib import Path
-
+from types import SimpleNamespace
+# Aquí importaremos pandas (ej. import pandas as pd).
 
 ARCHIVO_CSV = Path(__file__).with_name("atenciones.csv")
 
 
-def cargar_atenciones(ruta_csv=ARCHIVO_CSV):
-    """Devuelve las atenciones del CSV como una lista de diccionarios."""
-    atenciones = []
+def explorar_atenciones(atenciones):
+    """Decisión 1: ¿qué leímos y cuántas atenciones hay?"""
+    # Contamos las filas del DataFrame y mostramos los nombres de sus columnas.
+    pass
 
-    try:
-        with open(ruta_csv, mode="r", encoding="utf-8-sig", newline="") as archivo:
-            lector = csv.DictReader(archivo)
 
-            for fila in lector:
-                # TODO 1A: convierta edad y minutos_espera a números enteros.
-                # TODO 1B: agregue cada fila a la lista atenciones.
-                pass
+def contar_categorias(atenciones):
+    """Decisión 2: ¿qué medicamentos, hospitales y diagnósticos aparecen?"""
+    # Contamos la frecuencia de cada medicamento, hospital y diagnóstico usando Pandas.
+    pass
 
-    except FileNotFoundError:
-        print(f"No se encontró el archivo de datos: {ruta_csv}")
-        raise SystemExit(1)
 
-    return atenciones
+def concluir(atenciones):
+    """Decisiones 3 y 4: ¿cuántas personas hay y cuánto esperaron?"""
+    # Contamos personas únicas por cédula, visitas por persona, total y promedio de espera.
+    pass
+
+
+try:
+    # Leemos el CSV con pd.read_csv(ARCHIVO_CSV). Se usa SimpleNamespace(empty=True) para evitar error.
+    atenciones = SimpleNamespace(empty=True)
+except FileNotFoundError:
+    print(f"No encontramos el archivo: {ARCHIVO_CSV}")
+    raise SystemExit(1)
+
+if not atenciones.empty:
+    explorar_atenciones(atenciones)
+    contar_categorias(atenciones)
+    concluir(atenciones)
+else:
+    print("El archivo no contiene atenciones.")
