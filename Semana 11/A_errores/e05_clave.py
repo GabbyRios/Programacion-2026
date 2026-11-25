@@ -12,4 +12,4 @@ SALIDA ESPERADA
 """
 estudiante = {"nombre": "Luis", "edad": 18, "grupo": "B"}
 print("Nombre:", estudiante["nombre"])
-print("Grupo:", estudiante["Grupo"])
+print("Grupo:", estudiante["grupo"])
