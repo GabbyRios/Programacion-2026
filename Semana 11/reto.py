@@ -13,10 +13,11 @@ import pandas as pd
 
 def resumen_grupo_b(df):
     """Devuelve (cantidad, promedio) del grupo B."""
-    # su código aquí
-    return (0, 0.0)
 
+    grupo_b = df[df["grupo"] == "B"]
 
-if __name__ == "__main__":
-    notas = pd.read_csv("notas.csv")
-    print("Resultado:", resumen_grupo_b(notas))
+    cantidad = len(grupo_b[grupo_b["examen"] >= 70])
+
+    promedio = round(grupo_b["examen"].mean(), 2)
+
+    return (cantidad, promedio)
